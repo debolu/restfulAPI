@@ -29,7 +29,7 @@ jobs:
         run: newman run Demo_test.postman_collection.json -r htmlextra --reporter-htmlextra-export ./reports/report.html
 
       - name: Upload HTML Report
-        uses: actions/upload-artifact@v3  # Updated to the latest version
+        uses: actions/upload-artifact@v4  # Updated to the latest version
         with:
           name: newman-report
           path: ./reports/report.html
