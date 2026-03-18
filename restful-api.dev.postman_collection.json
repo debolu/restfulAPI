@@ -48,9 +48,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/objects",
+          "raw": "{{BASE_URL}}/objects",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "objects"
@@ -64,9 +64,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseURL}}/objects",
+              "raw": "{{BASE_URL}}/objects",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "objects"
@@ -189,9 +189,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects",
+          "raw": "{{BASE_URL}}/collections/products/objects",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -207,9 +207,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects",
+              "raw": "{{BASE_URL}}/collections/products/objects",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -340,8 +340,8 @@
       ],
       "request": {
         "auth": {
-          "type": "apikey",
-          "apikey": [
+          "type": "API_KEY",
+          "API_KEY": [
             {
               "key": "key",
               "value": "x-api-key",
@@ -357,9 +357,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects",
+          "raw": "{{BASE_URL}}/collections/products/objects",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -375,9 +375,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects",
+              "raw": "{{BASE_URL}}/collections/products/objects",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -509,9 +509,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects",
+          "raw": "{{BASE_URL}}/collections/products/objects",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -527,9 +527,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects",
+              "raw": "{{BASE_URL}}/collections/products/objects",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -665,9 +665,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/1",
+          "raw": "{{BASE_URL}}/collections/products/objects/1",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -684,9 +684,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/1",
+              "raw": "{{BASE_URL}}/collections/products/objects/1",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -833,9 +833,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects",
+          "raw": "{{BASE_URL}}/collections/products/objects",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -860,9 +860,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects",
+              "raw": "{{BASE_URL}}/collections/products/objects",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -991,9 +991,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/1",
+          "raw": "{{BASE_URL}}/collections/products/objects/1",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -1010,9 +1010,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c99ef51b2770b",
+              "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c99ef51b2770b",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -1130,7 +1130,7 @@
               "    let jsonData = pm.response.json();",
               "",
               "    // Load schema from collection/environment variable",
-              "    const schema = pm.collectionVariables.get(\"responseSchema\") || pm.environment.get(\"responseSchema\");",
+              "    const schema = pm.collectionVariables.get(\"RESPONSESCHEMA\") || pm.environment.get(\"RESPONSESCHEMA\");",
               "    const parsedSchema = typeof schema === \"string\" ? JSON.parse(schema) : schema;",
               "",
               "    // Validate",
@@ -1167,9 +1167,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects",
+          "raw": "{{BASE_URL}}/collections/products/objects",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -1194,9 +1194,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects",
+              "raw": "{{BASE_URL}}/collections/products/objects",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -1346,9 +1346,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects",
+          "raw": "{{BASE_URL}}/collections/products/objects",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -1373,9 +1373,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects",
+              "raw": "{{BASE_URL}}/collections/products/objects",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -1492,7 +1492,7 @@
               "    let jsonData = pm.response.json();",
               "",
               "    // Load schema from collection/environment variable",
-              "    const schema = pm.collectionVariables.get(\"responseSchema\") || pm.environment.get(\"responseSchema\");",
+              "    const schema = pm.collectionVariables.get(\"RESPONSESCHEMA\") || pm.environment.get(\"RESPONSESCHEMA\");",
               "    const parsedSchema = typeof schema === \"string\" ? JSON.parse(schema) : schema;",
               "",
               "    // Validate",
@@ -1528,9 +1528,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+          "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -1556,9 +1556,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+              "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -1676,7 +1676,7 @@
               "    let jsonData = pm.response.json();",
               "",
               "    // Load schema from collection/environment variable",
-              "    const schema = pm.collectionVariables.get(\"responseSchema\") || pm.environment.get(\"responseSchema\");",
+              "    const schema = pm.collectionVariables.get(\"RESPONSESCHEMA\") || pm.environment.get(\"RESPONSESCHEMA\");",
               "    const parsedSchema = typeof schema === \"string\" ? JSON.parse(schema) : schema;",
               "",
               "    // Validate",
@@ -1712,9 +1712,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+          "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -1740,9 +1740,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a056583772d",
+              "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a056583772d",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -1860,7 +1860,7 @@
               "    let jsonData = pm.response.json();",
               "",
               "    // Load schema from collection/environment variable",
-              "    const schema = pm.collectionVariables.get(\"responseSchema\") || pm.environment.get(\"responseSchema\");",
+              "    const schema = pm.collectionVariables.get(\"RESPONSESCHEMA\") || pm.environment.get(\"RESPONSESCHEMA\");",
               "    const parsedSchema = typeof schema === \"string\" ? JSON.parse(schema) : schema;",
               "",
               "    // Validate",
@@ -1896,9 +1896,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+          "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -1924,9 +1924,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+              "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -2044,7 +2044,7 @@
               "    let jsonData = pm.response.json();",
               "",
               "    // Load schema from collection/environment variable",
-              "    const schema = pm.collectionVariables.get(\"responseSchema\") || pm.environment.get(\"responseSchema\");",
+              "    const schema = pm.collectionVariables.get(\"RESPONSESCHEMA\") || pm.environment.get(\"RESPONSESCHEMA\");",
               "    const parsedSchema = typeof schema === \"string\" ? JSON.parse(schema) : schema;",
               "",
               "    // Validate",
@@ -2080,9 +2080,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+          "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -2108,9 +2108,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+              "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -2259,9 +2259,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+          "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -2287,9 +2287,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+              "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -2407,7 +2407,7 @@
               "    let jsonData = pm.response.json();",
               "",
               "    // Load schema from collection/environment variable",
-              "    const schema = pm.collectionVariables.get(\"responseSchema\") || pm.environment.get(\"responseSchema\");",
+              "    const schema = pm.collectionVariables.get(\"RESPONSESCHEMA\") || pm.environment.get(\"RESPONSESCHEMA\");",
               "    const parsedSchema = typeof schema === \"string\" ? JSON.parse(schema) : schema;",
               "",
               "    // Validate",
@@ -2443,9 +2443,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+          "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -2471,9 +2471,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a056583772d",
+              "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a056583772d",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -2591,7 +2591,7 @@
               "    let jsonData = pm.response.json();",
               "",
               "    // Load schema from collection/environment variable",
-              "    const schema = pm.collectionVariables.get(\"responseSchema\") || pm.environment.get(\"responseSchema\");",
+              "    const schema = pm.collectionVariables.get(\"RESPONSESCHEMA\") || pm.environment.get(\"RESPONSESCHEMA\");",
               "    const parsedSchema = typeof schema === \"string\" ? JSON.parse(schema) : schema;",
               "",
               "    // Validate",
@@ -2627,9 +2627,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a056583772d",
+          "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a056583772d",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -2655,9 +2655,9 @@
               }
             },
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a056583772d",
+              "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a056583772d",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -2793,9 +2793,9 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+          "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -2812,9 +2812,9 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
+              "raw": "{{BASE_URL}}/collections/products/objects/ff8081819c5368bb019c9a0b336b7733",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -2952,9 +2952,9 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/collections/products/objects/500",
+          "raw": "{{BASE_URL}}/collections/products/objects/500",
           "host": [
-            "{{baseURL}}"
+            "{{BASE_URL}}"
           ],
           "path": [
             "collections",
@@ -2971,9 +2971,9 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseURL}}/collections/products/objects/500",
+              "raw": "{{BASE_URL}}/collections/products/objects/500",
               "host": [
-                "{{baseURL}}"
+                "{{BASE_URL}}"
               ],
               "path": [
                 "collections",
@@ -3075,8 +3075,8 @@
     }
   ],
   "auth": {
-    "type": "apikey",
-    "apikey": [
+    "type": "API_KEY",
+    "API_KEY": [
       {
         "key": "value",
         "value": "{{baseKey}}",
@@ -3127,7 +3127,7 @@
   ],
   "variable": [
     {
-      "key": "baseURL",
+      "key": "BASE_URL",
       "value": ""
     },
     {
@@ -3135,7 +3135,7 @@
       "value": ""
     },
     {
-      "key": "responseSchema",
+      "key": "RESPONSESCHEMA",
       "value": ""
     },
     {
