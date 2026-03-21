@@ -1,17 +1,11 @@
-name: Run Postman API Collection
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+name: Run Postman API Collection
 
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
-  schedule:
-    - cron: '0 8 * * *'   # Runs every day at 9 AM Nigeria time
-    - cron: '0 11 * * *'  # 12 PM Nigeria time
-    - cron: '0 17 * * *'  # 6 PM Nigeria time
+      - main  # Adjust to your main branch name
+  workflow_dispatch:  # Allows manual trigger of the workflow
 
 jobs:
   run-newman:
@@ -19,24 +13,23 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5  # Updated to the latest version
 
       - name: Set up Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v5  # Updated to the latest version
         with:
-          node-version: '20'
+          node-version: '20'  # Specify the Node.js version
 
-      - name: Install Newman locally
-        run: npm install newman newman-reporter-htmlextra --save-dev
+      - name: Install Newman and HTMLExtra Reporter
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra  # Ensure htmlextra reporter is installed
 
-      - name: Create reports folder
-        run: mkdir -p ./reports
-
-      - name: Run RESTFULAPI Collection
-        run: newman run restful-api.dev_Newman.postman_collection.json --env-var baseURL=https://api.restful-api.dev --env-var api_Key=44e75bcd-d601-4361-8b6f-f40bcd342ae7
+      - name: Run Postman Collection
+        run: newman run restful-api.dev_Newman.postman_collection.json  --env-var baseURL=https://api.restful-api.dev --env-var api_Key=44e75bcd-d601-4361-8b6f-f40bcd342ae7 -r htmlextra --reporter-htmlextra-export ./reports/report.html
 
       - name: Upload HTML Report
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v5  # Updated to the latest version
         with:
           name: newman-report
           path: ./reports/report.html
