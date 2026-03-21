@@ -13,12 +13,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # Updated to the latest version
+        uses: actions/checkout@v5  # Updated to the latest version
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Updated to the latest version
+        uses: actions/setup-node@v5  # Updated to the latest version
         with:
-          node-version: '16'  # Specify the Node.js version
+          node-version: '20'  # Specify the Node.js version
 
       - name: Install Newman and HTMLExtra Reporter
         run: |
@@ -33,7 +33,7 @@ jobs:
         #   api_Key: 44e75bcd-d601-4361-8b6f-f40bcd342ae7
         #   baseURL: https://api.restful-api.dev
         run:
-          npx newman run restful-api.dev_Newman.postman_collection.json --env-var BaseUrl=https://api.restful-api.dev --env-var api_Key=44e75bcd-d601-4361-8b6f-f40bcd342ae7 -r htmlextra --reporter-htmlextra-export ./reports/report.html --verbose
+          npx newman run restful-api.dev_Newman.postman_collection.json --env-var baseURL=https://api.restful-api.dev --env-var api_Key=44e75bcd-d601-4361-8b6f-f40bcd342ae7 -r htmlextra --reporter-htmlextra-export ./reports/report.html --verbose
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v5  # Updated to the latest version
