@@ -32,8 +32,8 @@ jobs:
       - name: Create reports folder
         run: mkdir -p ./reports
 
-      - name: Run gbp automation Collection
-        run: npx restful-api.dev_Newman.postman_collection.json --env-var baseURL=https://api.restful-api.dev --env-var api_Key=44e75bcd-d601-4361-8b6f-f40bcd342ae7
+      - name: Run RESTFULAPI Collection
+        run: npx newman run restful-api.dev_Newman.postman_collection.json --env-var baseURL=https://api.restful-api.dev --env-var api_Key=44e75bcd-d601-4361-8b6f-f40bcd342ae7
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v5
