@@ -26,7 +26,7 @@ jobs:
           npm install -g newman-reporter-htmlextra  # Ensure htmlextra reporter is installed
 
       - name: Run Postman Collection
-        run: newman run restful-api.dev_Newman.postman_collection.json  --env-var baseURL=https://api.restful-api.dev --env-var api_Key=44e75bcd-d601-4361-8b6f-f40bcd342ae7 -r htmlextra --reporter-htmlextra-export ./reports/report.html
+        run: newman run restful_api.dev_Newman.postman_collection.json  --env-var baseURL=https://api.restful-api.dev --env-var api_Key=44e75bcd-d601-4361-8b6f-f40bcd342ae7 -r htmlextra --reporter-htmlextra-export ./reports/report.html
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v5  # Updated to the latest version
