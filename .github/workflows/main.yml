@@ -36,7 +36,7 @@ jobs:
         run: npx newman run restfulApiCopy.postman_collection.json --env-var baseURL=https://api.restful-api.dev --env-var api_Key=44e75bcd-d601-4361-8b6f-f40bcd342ae7 --reporters htmlextra --reporter-htmlextra-export ./reports/report.html
 
       - name: Run simpleBooks API collection 
-        run: npx newman run simpleBooks.postman_collection.json --env-var baseUrl=https://simple-books-api.click --env-var accessToken=3f02aa6ab10bb973bcc6b0279021a4173c26398a514659558edb62ef7deb3c13 --env-var Authentication=1d8d7f97398b896d2ebaa283f6c4a8d88876f50df627ace03dd6fe8032572888 --reporters htmlextra --reporter-htmlextra-export ./reports/report1.html
+        run: npx newman run simpleBooks.postman_collection.json --env-var baseUrl=https://simple-books-api.click --env-var accessToken=3f02aa6ab10bb973bcc6b0279021a4173c26398a514659558edb62ef7deb3c13 --env-var Authentication=1d8d7f97398b896d2ebaa283f6c4a8d88876f50df627ace03dd6fe8032572888 --reporters htmlextra --reporter-htmlextra-export ./reports/simpleBooksReport.html
 
 
       - name: Upload HTML Report
