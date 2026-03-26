@@ -44,3 +44,9 @@ jobs:
         with:
           name: newman-report
           path: ./reports/report.html
+
+      - name: Upload simpleBooks Report
+        uses: actions/upload-artifact@v5
+        with:
+          name: simpleBooks-report
+          path: ./reports/simpleBooksReport.html
