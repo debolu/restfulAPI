@@ -1,0 +1,654 @@
+{
+  "info": {
+    "_postman_id": "82fc65f4-7ffa-4831-a397-5a0a6296a1c9",
+    "name": "simpleBooks",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27178807"
+  },
+  "item": [
+    {
+      "name": "API Status",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// API Status",
+              "pm.test(\"Response time is less than 3000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+              "});",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    pm.response.to.have.header(\"Content-Type\");",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "",
+              "pm.test(\"Response body has 'status' property\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an(\"object\");",
+              "    pm.expect(jsonData).to.have.property(\"status\");",
+              "});",
+              "",
+              "pm.test(\"API status is 'OK'\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.status).to.equal(\"OK\");",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/status",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List of books",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// List of books",
+              "pm.test(\"Response time is less than 3000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+              "});",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    pm.response.to.have.header(\"Content-Type\");",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "",
+              "pm.test(\"Response is a non-empty array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an(\"array\").that.is.not.empty;",
+              "});",
+              "",
+              "pm.test(\"Each book has required fields with correct types\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (book) {",
+              "        pm.expect(book).to.have.property(\"id\").that.is.a(\"number\");",
+              "        pm.expect(book).to.have.property(\"name\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"type\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"available\").that.is.a(\"boolean\");",
+              "    });",
+              "});",
+              "",
+              "pm.test(\"Book type is either 'fiction' or 'non-fiction'\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (book) {",
+              "        pm.expect([\"fiction\", \"non-fiction\"]).to.include(book.type);",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List of books in stock",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// List of books in stock (available=true)",
+              "pm.test(\"Response time is less than 3000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+              "});",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    pm.response.to.have.header(\"Content-Type\");",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "",
+              "pm.test(\"Response is an array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an(\"array\");",
+              "});",
+              "",
+              "// pm.test(\"All returned books have available=true\", function () {",
+              "//     var jsonData = pm.response.json();",
+              "//     jsonData.forEach(function (book) {",
+              "//         pm.expect(book.available).to.equal(true);",
+              "//     });",
+              "// });",
+              "",
+              "pm.test(\"Each book has required fields with correct types\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (book) {",
+              "        pm.expect(book).to.have.property(\"id\").that.is.a(\"number\");",
+              "        pm.expect(book).to.have.property(\"name\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"type\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"available\").that.is.a(\"boolean\");",
+              "    });",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?available=true",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "available",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List of books that are not in stock",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// List of books not in stock (available=false)",
+              "pm.test(\"Response time is less than 3000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+              "});",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    pm.response.to.have.header(\"Content-Type\");",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "",
+              "pm.test(\"Response is an array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an(\"array\");",
+              "});",
+              "",
+              "// pm.test(\"All returned books have available=false\", function () {",
+              "//     var jsonData = pm.response.json();",
+              "//     jsonData.forEach(function (book) {",
+              "//         pm.expect(book.available).to.equal(false);",
+              "//     });",
+              "// });",
+              "",
+              "pm.test(\"Each book has required fields with correct types\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (book) {",
+              "        pm.expect(book).to.have.property(\"id\").that.is.a(\"number\");",
+              "        pm.expect(book).to.have.property(\"name\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"type\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"available\").that.is.a(\"boolean\");",
+              "    });",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?available=false",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "available",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Single book",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Single book",
+              "pm.test(\"Response time is less than 3000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+              "});",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    pm.response.to.have.header(\"Content-Type\");",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "",
+              "pm.test(\"Response is an object (single book)\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an(\"object\");",
+              "    pm.expect(jsonData).to.not.be.an(\"array\");",
+              "});",
+              "",
+              "pm.test(\"Book has all required fields with correct types\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"number\");",
+              "    pm.expect(jsonData).to.have.property(\"name\").that.is.a(\"string\");",
+              "    pm.expect(jsonData).to.have.property(\"type\").that.is.a(\"string\");",
+              "    pm.expect(jsonData).to.have.property(\"available\").that.is.a(\"boolean\");",
+              "    pm.expect(jsonData).to.have.property(\"author\").that.is.a(\"string\");",
+              "    pm.expect(jsonData).to.have.property(\"price\").that.is.a(\"number\");",
+              "    pm.expect(jsonData).to.have.property(\"current-stock\").that.is.a(\"number\");",
+              "});",
+              "",
+              "pm.test(\"Book type is either 'fiction' or 'non-fiction'\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect([\"fiction\", \"non-fiction\"]).to.include(jsonData.type);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/:id",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Limited list of books",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Limited list of books (limit=3)",
+              "pm.test(\"Response time is less than 3000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+              "});",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    pm.response.to.have.header(\"Content-Type\");",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "",
+              "pm.test(\"Response is an array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an(\"array\");",
+              "});",
+              "",
+              "pm.test(\"Response contains at most 3 books (limit=3)\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.length).to.be.at.most(3);",
+              "});",
+              "",
+              "pm.test(\"Each book has required fields\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (book) {",
+              "        pm.expect(book).to.have.property(\"id\").that.is.a(\"number\");",
+              "        pm.expect(book).to.have.property(\"name\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"type\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"available\").that.is.a(\"boolean\");",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?limit=3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "3",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List of fictional books",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// List of fictional books (type=fiction)",
+              "pm.test(\"Response time is less than 3000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+              "});",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    pm.response.to.have.header(\"Content-Type\");",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "",
+              "pm.test(\"Response is an array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an(\"array\");",
+              "});",
+              "",
+              "pm.test(\"All returned books are of type 'fiction'\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (book) {",
+              "        pm.expect(book.type).to.equal(\"fiction\");",
+              "    });",
+              "});",
+              "",
+              "pm.test(\"Each book has required fields\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (book) {",
+              "        pm.expect(book).to.have.property(\"id\").that.is.a(\"number\");",
+              "        pm.expect(book).to.have.property(\"name\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"type\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"available\").that.is.a(\"boolean\");",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?type=fiction",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "type",
+              "value": "fiction"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List of non-fictional books Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// List of non-fictional books (type=non-fiction)",
+              "pm.test(\"Response time is less than 3000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+              "});",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    pm.response.to.have.header(\"Content-Type\");",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "",
+              "pm.test(\"Response is an array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an(\"array\");",
+              "});",
+              "",
+              "pm.test(\"All returned books are of type 'non-fiction'\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (book) {",
+              "        pm.expect(book.type).to.equal(\"non-fiction\");",
+              "    });",
+              "});",
+              "",
+              "pm.test(\"Each book has required fields\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (book) {",
+              "        pm.expect(book).to.have.property(\"id\").that.is.a(\"number\");",
+              "        pm.expect(book).to.have.property(\"name\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"type\").that.is.a(\"string\");",
+              "        pm.expect(book).to.have.property(\"available\").that.is.a(\"boolean\");",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?type=non-fiction",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "type",
+              "value": "non-fiction"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Get Orders",
+              "pm.test(\"Response time is less than 3000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+              "});",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    pm.response.to.have.header(\"Content-Type\");",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+              "});",
+              "",
+              "pm.test(\"Response is an array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an(\"array\");",
+              "});",
+              "",
+              "pm.test(\"Each order has required fields\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    jsonData.forEach(function (order) {",
+              "        pm.expect(order).to.have.property(\"id\").that.is.a(\"string\");",
+              "        pm.expect(order).to.have.property(\"bookId\").that.is.a(\"number\");",
+              "        pm.expect(order).to.have.property(\"customerName\").that.is.a(\"string\");",
+              "        pm.expect(order).to.have.property(\"createdBy\").that.is.a(\"string\");",
+              "        pm.expect(order).to.have.property(\"quantity\").that.is.a(\"number\");",
+              "        pm.expect(order).to.have.property(\"timestamp\").that.is.a(\"number\");",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Authentication}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/orders",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{accessToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    },
+    {
+      "key": "Authentication",
+      "value": ""
+    }
+  ]
+}
